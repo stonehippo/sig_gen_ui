@@ -13,6 +13,8 @@ The MiniGen can be controlled entirely in code, but sometimes it's nicer to have
 - [Sparkfun Qwiic Twist](https://www.sparkfun.com/sparkfun-qwiic-twist-rgb-rotary-encoder-breakout.html) - a breakout board for a rotary encoder that uses an I2C interface
 - [Sparkfun Qwiic OLED](https://www.sparkfun.com/sparkfun-qwiic-oled-display-0-91-in-128x32-lcd-24606.html) - a small OLED display at 128x32 pixels, also using I2C
 
+You'll also need a USB to serial board to talk to the Arduino Pro Mini. I used the [Sparkfun FTDI Basic](https://www.sparkfun.com/sparkfun-ftdi-basic-breakout-3-3v.html) for this project.
+
 To connect the encoder and OLED, I cut a Qwiic cable in half and soldered the wires to the I2C, power, and ground pins on the Arduino Pro Mini.
 
 ## Software
