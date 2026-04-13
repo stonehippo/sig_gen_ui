@@ -51,7 +51,7 @@ void setup() {
     display.setTextSize(1);
     display.setTextColor(SSD1306_WHITE);
     
-    updateDisplay(newFrequency, MiniGen::FULL, 100.0, FREQUENCY);
+    updateDisplay(newFrequency, MiniGen::SINE, 100.0, FREQUENCY);
     display.display();
 }
 
