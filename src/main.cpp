@@ -94,6 +94,9 @@ void loop() {
                     frequency -= increment;
                 }
             }
+            if (frequency < 0) {
+                frequency = 0;
+            }
             uint32_t newFrequency = gen.freqCalc(frequency);
             gen.adjustFreq(MiniGen::FREQ0, newFrequency);
         }
