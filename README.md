@@ -1,6 +1,6 @@
 # Sparkfun MiniGen UI
 
-The [Sparkfun MiniGen](https://learn.sparkfun.com/tutorials/minigen-hookup-guide) is a little waveform generator based on the Analog Devices AS9837. The board to standalone or to work paired with an [Arduino Pro Mini](https://www.sparkfun.com/arduino-pro-mini-328-3-3v-8mhz.html).
+The [Sparkfun MiniGen](https://learn.sparkfun.com/tutorials/minigen-hookup-guide) is a little waveform generator based on the Analog Devices AS9837. The board is able to work to standalone or paired with an [Arduino Pro Mini](https://www.sparkfun.com/arduino-pro-mini-328-3-3v-8mhz.html).
 
 The MiniGen can be controlled entirely in code, but sometimes it's nicer to have a little physical UI. To make this possible, I paired the MiniGen with a rotary encoder to control the frequency (and the increments of adjustment) and the output waveform.
 
@@ -20,3 +20,14 @@ To connect the encoder and OLED, I cut a Qwiic cable in half and soldered the wi
 ## Software
 
 I developed this code using [PlatformIO](https://platformio.org/) and the [Arduino framework](https://docs.arduino.cc/language-reference/). I used the Visual Studio Code-based PlatformIO IDE, but this project will work just as well with the CLI.
+
+## Hardware
+
+I recently created a 3D printed case for the MiniGen. It embeds a Sparkfun FTDI Basic for power and updated programming, plus banana plugs to make it easier to connect to the generator ouput.
+
+![MiniGen case model](/hardware/minigen_case_model.png)
+![MiniGen case render](/hardware/minigen_case_render.png)
+![MiniGen case](/hardware/minigen_case.jpeg)
+![MiniGen case from behind](/hardware/minigen_case_rear.jpeg)
+
+You can print your own in [STL](/hardware/STL/) or [STEP](/hardware/STEP/) format. Tip: when printing the main body of the case, print both halves with the flat surface at the top and support turned on.
