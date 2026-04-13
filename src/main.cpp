@@ -25,10 +25,10 @@ enum StateMachine {
 
 // put function declarations here:
 void updateDisplay(float, int, float, int);
-void graphSine();
-void graphSquare();
-void graphSquare_2();
-void graphTriangle();
+void graphSine(int, int);
+void graphSquare(int, int);
+void graphSquare_2(int, int);
+void graphTriangle(int, int);
 void drawPip(int, int);
 
 void setup() {
@@ -238,41 +238,57 @@ void updateDisplay(float freq, int mode, float increment, int state) {
     display.setCursor(16 ,24);
     display.print("Inc: ");
     display.print(increment);
+    switch (mode) {
+        case MiniGen::SINE:
+            graphSine(100, 12);
+            break;
+        case MiniGen::TRIANGLE:
+            graphTriangle(100, 12);
+            break;
+        case MiniGen::SQUARE:
+            graphSquare(100, 12);
+            break;
+        case MiniGen::SQUARE_2:
+            graphSquare_2(100, 12);
+            break;
+        default:
+            break;
+    }
     display.display();
 }
 
-void graphSine() {
+void graphSine(int xOffset, int yOffset) {
     for (int i = 0; i < SAMPLES; i++) {
         float v = sin(2.0 * PI * i / SAMPLES);
-        display.drawPixel(i, map(v * 10, -10.0, 10.0, 0.0, 16.0), SSD1306_WHITE);
+        display.drawPixel(i + xOffset, map(v * 10, -10.0, 10.0, 0.0, 16.0) + yOffset, SSD1306_WHITE);
     }
 }
 
-void graphSquare() {
-    display.drawFastVLine(0, 0, 8, SSD1306_WHITE);
-    display.drawFastVLine(6, 0, 16, SSD1306_WHITE);
-    display.drawFastVLine(12, 0, 16, SSD1306_WHITE);
-    display.drawFastVLine(18, 0, 16, SSD1306_WHITE);
-    display.drawFastVLine(24, 8, 8, SSD1306_WHITE);
-    display.drawFastHLine(0, 0, 6, SSD1306_WHITE);
-    display.drawFastHLine(6, 16, 7, SSD1306_WHITE);
-    display.drawFastHLine(12, 0, 6, SSD1306_WHITE);
-    display.drawFastHLine(18, 16, 7, SSD1306_WHITE);
+void graphSquare(int xOffset, int yOffset) {
+    display.drawFastVLine(xOffset + 0, yOffset + 0, 8, SSD1306_WHITE);
+    display.drawFastVLine(xOffset + 6, yOffset + 0, 16, SSD1306_WHITE);
+    display.drawFastVLine(xOffset + 12, yOffset + 0, 16, SSD1306_WHITE);
+    display.drawFastVLine(xOffset + 18, yOffset + 0, 16, SSD1306_WHITE);
+    display.drawFastVLine(xOffset + 24, yOffset + 8, 8, SSD1306_WHITE);
+    display.drawFastHLine(xOffset + 0, yOffset + 0, 6, SSD1306_WHITE);
+    display.drawFastHLine(xOffset + 6, yOffset + 16, 7, SSD1306_WHITE);
+    display.drawFastHLine(xOffset + 12, yOffset + 0, 6, SSD1306_WHITE);
+    display.drawFastHLine(xOffset + 18, yOffset + 16, 7, SSD1306_WHITE);
 }
 
-void graphSquare_2() {
-    display.drawFastVLine(0, 0, 8, SSD1306_WHITE);
-    display.drawFastVLine(12, 0, 16, SSD1306_WHITE);
-    display.drawFastVLine(24, 8, 8, SSD1306_WHITE);
-    display.drawFastHLine(0, 0, 12, SSD1306_WHITE);
-    display.drawFastHLine(12, 16, 13, SSD1306_WHITE);
+void graphSquare_2(int xOffset, int yOffset) {
+    display.drawFastVLine(xOffset + 0, yOffset + 0, 8, SSD1306_WHITE);
+    display.drawFastVLine(xOffset + 12, yOffset + 0, 16, SSD1306_WHITE);
+    display.drawFastVLine(xOffset + 24, yOffset + 8, 8, SSD1306_WHITE);
+    display.drawFastHLine(xOffset + 0, yOffset + 0, 12, SSD1306_WHITE);
+    display.drawFastHLine(xOffset + 12, yOffset + 16, 13, SSD1306_WHITE);
 }
 
-void graphTriangle() {
-    display.drawLine(0, 8, 4, 0, SSD1306_WHITE);
-    display.drawLine(4, 0, 12, 16, SSD1306_WHITE);
-    display.drawLine(12, 16, 20, 0, SSD1306_WHITE);
-    display.drawLine(20, 0, 24, 8, SSD1306_WHITE);
+void graphTriangle(int xOffset, int yOffset) {
+    display.drawLine(xOffset + 0, yOffset + 8, xOffset + 4, yOffset + 0, SSD1306_WHITE);
+    display.drawLine(xOffset + 4, yOffset + 0, xOffset + 12, yOffset + 16, SSD1306_WHITE);
+    display.drawLine(xOffset + 12, yOffset + 16, xOffset + 20, yOffset + 0, SSD1306_WHITE);
+    display.drawLine(xOffset + 20, yOffset + 0, xOffset + 24, yOffset + 8, SSD1306_WHITE);
 }
 
 void drawPip(int x, int y) {
